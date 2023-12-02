@@ -4,7 +4,7 @@ class Day1
     {
         List<string> data = new List<string>();
         StreamReader reader = new StreamReader("input.txt");
-        string line = reader.ReadLine();
+        string? line = reader.ReadLine();
         while (line != null)
         {
             data.Add(line);
@@ -12,23 +12,22 @@ class Day1
         }
         reader.Close();
 
-        Day1 solution = new Day1();
-        Console.WriteLine("Part 1 Answer: " + solution.Part1(data));
-        Console.WriteLine("Part 2 Answer: " + solution.Part2(data));
+        Console.WriteLine("Part 1 Answer: " + Part1(data));
+        Console.WriteLine("Part 2 Answer: " + Part2(data));
     }
 
-    int Part1(List<string> data)
+    static int Part1(List<string> data)
     {
         int total = 0;
         foreach (string line in data)
         {
             int start = 0;
             int end = line.Length - 1;
-            while (!Char.IsNumber(line[start]))
+            while (!char.IsNumber(line[start]))
             {
                 start++;
             }
-            while (!Char.IsNumber(line[end]))
+            while (!char.IsNumber(line[end]))
             {
                 end--;
             }
@@ -37,9 +36,9 @@ class Day1
         return total;
     }
 
-    int Part2(List<string> data)
+    static int Part2(List<string> data)
     {
-        String[] numWords = new String[] { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+        string[] numWords = new string[] { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
         int total = 0;
         foreach (string line in data)
         {
@@ -49,7 +48,7 @@ class Day1
             int endDigit = -1;
             while (startDigit < 0)
             {
-                if (Char.IsNumber(line[start]))
+                if (char.IsNumber(line[start]))
                 {
                     startDigit = int.Parse(line[start].ToString());
                 }
@@ -74,7 +73,7 @@ class Day1
             }
             while (endDigit < 0)
             {
-                if (Char.IsNumber(line[end]))
+                if (char.IsNumber(line[end]))
                 {
                     endDigit = int.Parse(line[end].ToString());
                 }
