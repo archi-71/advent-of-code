@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 class Day3
 {
     static void Main()
