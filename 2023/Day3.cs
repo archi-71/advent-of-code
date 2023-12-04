@@ -2,26 +2,17 @@ class Day3
 {
     static void Main()
     {
-        List<string> data = new List<string>();
-        StreamReader reader = new StreamReader("input.txt");
-        string? line = reader.ReadLine();
-        while (line != null)
-        {
-            data.Add(line);
-            line = reader.ReadLine();
-        }
-        reader.Close();
-
+        string[] data = File.ReadLines("input.txt").ToArray();
         Console.WriteLine("Part 1 Answer: " + Part1(data));
         Console.WriteLine("Part 2 Answer: " + Part2(data));
     }
 
-    static int Part1(List<string> data)
+    static int Part1(string[] data)
     {
         int total = 0;
         int currentNum = 0;
         bool isPartNumber = false;
-        for (int i = 0; i < data.Count(); i++)
+        for (int i = 0; i < data.Length; i++)
         {
             for (int j = 0; j < data[i].Length; j++)
             {
@@ -34,7 +25,7 @@ class Day3
                         {
                             for (int l = -1; l < 2; l++)
                             {
-                                if (i + k >= 0 && j + l >= 0 && i + k < data.Count() && j + l < data[i].Length)
+                                if (i + k >= 0 && j + l >= 0 && i + k < data.Length && j + l < data[i].Length)
                                 {
                                     if (!(char.IsNumber(data[i + k][j + l]) || data[i + k][j + l] == '.'))
                                     {
@@ -64,12 +55,12 @@ class Day3
         return total;
     }
 
-    static int Part2(List<string> data)
+    static int Part2(string[] data)
     {
         Dictionary<string, List<int>> gears = new Dictionary<string, List<int>>();
         int currentNum = 0;
         string? gear = null;
-        for (int i = 0; i < data.Count(); i++)
+        for (int i = 0; i < data.Length; i++)
         {
             for (int j = 0; j < data[i].Length; j++)
             {
@@ -82,7 +73,7 @@ class Day3
                         {
                             for (int l = -1; l < 2; l++)
                             {
-                                if (i + k >= 0 && j + l >= 0 && i + k < data.Count() && j + l < data[i].Length)
+                                if (i + k >= 0 && j + l >= 0 && i + k < data.Length && j + l < data[i].Length)
                                 {
                                     if (data[i + k][j + l] == '*')
                                     {
