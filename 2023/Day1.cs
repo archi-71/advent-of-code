@@ -2,21 +2,12 @@ class Day1
 {
     static void Main()
     {
-        List<string> data = new List<string>();
-        StreamReader reader = new StreamReader("input.txt");
-        string? line = reader.ReadLine();
-        while (line != null)
-        {
-            data.Add(line);
-            line = reader.ReadLine();
-        }
-        reader.Close();
-
+        string[] data = File.ReadLines("input.txt").ToArray();
         Console.WriteLine("Part 1 Answer: " + Part1(data));
         Console.WriteLine("Part 2 Answer: " + Part2(data));
     }
 
-    static int Part1(List<string> data)
+    static int Part1(string[] data)
     {
         int total = 0;
         foreach (string line in data)
@@ -36,7 +27,7 @@ class Day1
         return total;
     }
 
-    static int Part2(List<string> data)
+    static int Part2(string[] data)
     {
         string[] numWords = new string[] { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
         int total = 0;
