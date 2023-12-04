@@ -2,24 +2,15 @@ class Day2
 {
     static void Main()
     {
-        List<string> data = new List<string>();
-        StreamReader reader = new StreamReader("input.txt");
-        string? line = reader.ReadLine();
-        while (line != null)
-        {
-            data.Add(line);
-            line = reader.ReadLine();
-        }
-        reader.Close();
-
+        string[] data = File.ReadLines("input.txt").ToArray();
         Console.WriteLine("Part 1 Answer: " + Part1(data));
         Console.WriteLine("Part 2 Answer: " + Part2(data));
     }
 
-    static int Part1(List<string> data)
+    static int Part1(string[] data)
     {
         int total = 0;
-        for (int i = 0; i < data.Count; i++)
+        for (int i = 0; i < data.Length; i++)
         {
             bool possible = true;
             string[] line = data[i].Substring(7 + (i + 1).ToString().Length).Split("; ");
@@ -46,10 +37,10 @@ class Day2
         return total;
     }
 
-    static int Part2(List<string> data)
+    static int Part2(string[] data)
     {
         int total = 0;
-        for (int i = 0; i < data.Count; i++)
+        for (int i = 0; i < data.Length; i++)
         {
             int mostReds = 0;
             int mostGreens = 0;
