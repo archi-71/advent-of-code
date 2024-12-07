@@ -18,9 +18,9 @@ std::vector<std::string> split(std::string s, std::string delimiter)
     return res;
 }
 
-bool solvable1(long test, std::vector<long> &values)
+bool solvable1(long long test, std::vector<long long> &values)
 {
-    long val = values.back();
+    long long val = values.back();
     values.pop_back();
     if (values.empty())
     {
@@ -39,17 +39,17 @@ bool solvable1(long test, std::vector<long> &values)
     return false;
 }
 
-long part1(const std::vector<std::string> &input)
+long long part1(const std::vector<std::string> &input)
 {
-    long total = 0;
+    long long total = 0;
     for (const auto &line : input)
     {
         std::vector<std::string> parts = split(line, " ");
-        long test = std::stol(parts[0]);
-        std::vector<long> values;
+        long long test = std::stoll(parts[0]);
+        std::vector<long long> values;
         for (int i = 1; i < parts.size(); i++)
         {
-            values.push_back(std::stol(parts[i]));
+            values.push_back(std::stoll(parts[i]));
         }
         if (solvable1(test, values))
         {
@@ -64,9 +64,9 @@ bool hasSuffix(const std::string &str, const std::string &suffix)
     return str.size() > suffix.size() && str.compare(str.size() - suffix.size(), suffix.size(), suffix) == 0;
 }
 
-bool solvable2(long test, std::vector<long> &values)
+bool solvable2(long long test, std::vector<long long> &values)
 {
-    long val = values.back();
+    long long val = values.back();
     values.pop_back();
     if (values.empty())
     {
@@ -75,7 +75,7 @@ bool solvable2(long test, std::vector<long> &values)
     }
     std::string testStr = std::to_string(test);
     std::string valStr = std::to_string(val);
-    if (hasSuffix(testStr, valStr) && solvable2(std::stol(testStr.substr(0, testStr.size() - valStr.size())), values))
+    if (hasSuffix(testStr, valStr) && solvable2(std::stoll(testStr.substr(0, testStr.size() - valStr.size())), values))
     {
         return true;
     }
@@ -91,17 +91,17 @@ bool solvable2(long test, std::vector<long> &values)
     return false;
 }
 
-long part2(const std::vector<std::string> &input)
+long long part2(const std::vector<std::string> &input)
 {
-    long total = 0;
+    long long total = 0;
     for (const auto &line : input)
     {
         std::vector<std::string> parts = split(line, " ");
-        long test = std::stol(parts[0]);
-        std::vector<long> values;
+        long long test = std::stoll(parts[0]);
+        std::vector<long long> values;
         for (int i = 1; i < parts.size(); i++)
         {
-            values.push_back(std::stol(parts[i]));
+            values.push_back(std::stoll(parts[i]));
         }
         if (solvable2(test, values))
         {
@@ -122,8 +122,8 @@ int main()
     }
     file.close();
 
-    fprintf(stdout, "Part 1 Answer: %ld\n", part1(input));
-    fprintf(stdout, "Part 2 Answer: %ld\n", part2(input));
+    fprintf(stdout, "Part 1 Answer: %lld\n", part1(input));
+    fprintf(stdout, "Part 2 Answer: %lld\n", part2(input));
 
     return 0;
 }
